@@ -1,4 +1,4 @@
-package br.com.fiap_02_wef.screen
+package br.com.fiap_02_wef.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,48 +14,48 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import br.com.fiap_02_wef.R
 
 @Composable
 fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
 
-    var emailState = remember {
+    val emailState = remember {
         mutableStateOf("")
     }
-    var senhaState = remember {
+    val password = remember {
         mutableStateOf("")
     }
+    val errorEmail = remember {
+        mutableStateOf(false)
+    }
+    val tamanhoMaximo = 8
 
     Surface(
-        modifier = modifier
-            .fillMaxSize(),
-        color = Color(0xffae6de6)
+        modifier = modifier.fillMaxSize(), color = Color(0xffae6de6)
     ) {
         Column(
-            modifier = Modifier
-                .padding(
-                    vertical = 32.dp,
-                    horizontal = 48.dp
-                ),
-            verticalArrangement = Arrangement.SpaceEvenly
+            modifier = Modifier.padding(
+                    vertical = 32.dp, horizontal = 48.dp
+                ), verticalArrangement = Arrangement.SpaceEvenly
         ) {
             Column {
                 Text(
-                    text = "Login",
+                    text = stringResource(id = R.string.login),
                     fontSize = 48.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
 
                 Text(
-                    text = "Efetue a sua autenticação.",
-                    color = Color.White
+                    text = stringResource(id = R.string.subtitle), color = Color.White
                 )
             }
+
             Column(
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -66,13 +66,10 @@ fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
                     },
                     label = {
                         Text(text = "E-mail")
-                    },
-                    modifier = Modifier.fillMaxWidth()
-                )
+                    }, modifier = Modifier.fillMaxWidth())
                 OutlinedTextField(
-                    value = senhaState.value,
-                    onValueChange = {
-                        senhaState.value = it
+                    value = password.value,
+                    onValueChange = { password.value = it
                     },
                     label = {
                         Text(text = "Senha")
@@ -81,18 +78,18 @@ fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
                 )
 
 
+                OutlinedTextField(value = password.value, onValueChange = {
+                   if (it.length <= tamanhoMaximo) password.value = it
+                }, label = {
+                    Text(text = stringResource(id = R.string.password))
+                }, modifier = Modifier.fillMaxWidth()
+                )
             }
             Button(
-                onClick = { navController.navigate(route = "home") },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(
-                    text = "Login"
-
-                )
-
-            }
+                onClick = { navController.navigate  (route = "novaPessoa") }
+        }
+                Modifier.fillMaxWidth()
+                Text(text = stringResource(id = R.string.enter))
         }
 
     }
-}

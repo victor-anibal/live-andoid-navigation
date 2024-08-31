@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WEF_v1</string>
+    <string name="login">Entrar</string>
+    <string name="subtitle">Por favor, digite suas informações</string>
+    <string name="email">Informe o seu e-mail</string>
+    <string name="password">Digite a sua senha</string>
+    <string name="enter">ENTRAR</string>
+    <string name="out">Sair</string>
+    <string name="about">Sobre nós</string>
+</resources>

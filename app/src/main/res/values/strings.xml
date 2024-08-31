@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">WEF_v1</string>
+    <string name="login">Login</string>
+    <string name="subtitle">Please, provide your information</string>
+    <string name="email">Enter your e-mail</string>
+    <string name="password">Enter your password</string>
+    <string name="enter">ENTER</string>
+    <string name="out">Out</string>
+    <string name="about">About us</string>
+
 </resources>

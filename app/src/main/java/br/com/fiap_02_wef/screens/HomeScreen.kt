@@ -1,4 +1,4 @@
-package br.com.fiap_02_wef.screen
+package br.com.fiap_02_wef.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,8 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import br.com.fiap_02_wef.R
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
@@ -23,12 +25,20 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
             Button(onClick = { navController.navigate(route = "about") }) {
-                Text(text = "About"
+                Text(text = stringResource(id = R.string.about))
             }
             Button(onClick = {navController.navigate(route = "login")}) {
-                Text(text = "Sair")
+                Text(text = stringResource(id = R.string.out))
             }
         }
     
         }
     }
+
+@Preview (showBackground = true, showSystemUi =
+true)
+
+@Composable
+private fun viewsc() {
+
+}
